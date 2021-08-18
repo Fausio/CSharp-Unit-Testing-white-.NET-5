@@ -10,17 +10,25 @@ namespace MyClassesTest
         [TestMethod]
         public void FileNameDoesExists()
         {
+            Assert.Inconclusive();
         }
 
         [TestMethod]
         public void FileNameDoesNotExists()
         {
+            Assert.Inconclusive();
         }
 
         [TestMethod]
-        public void FileNameNullOrEmpty(string fileName)
+        public void FileNameNullOrEmpty_usingAtribute( )
         {
-            throw new ArgumentNullException(nameof(fileName));
+            Assert.Inconclusive();
+        }
+
+        [TestMethod]
+        public void FileNameNullOrEmpty_usingTryCatch( )
+        {
+            Assert.Inconclusive();
         }
     }
 }
