@@ -37,10 +37,27 @@ namespace MyClassesTest
             fb.FileExists("");
         }
 
+
+
         [TestMethod]
         public void FileNameNullOrEmpty_usingTryCatch()
         {
-            Assert.Inconclusive();
+            FileProcess fb = new FileProcess();
+
+
+            try
+            {
+                fb.FileExists("");
+            }
+            catch (ArgumentNullException)
+            {
+                // Test was a sucess
+                return;
+            }
+
+            // Fail the test
+            Assert.Fail("Call to FileExists did Not throw an ArgumentNullException");
+
         }
     }
 }
