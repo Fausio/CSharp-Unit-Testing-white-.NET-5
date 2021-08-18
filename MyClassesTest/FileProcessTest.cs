@@ -30,9 +30,11 @@ namespace MyClassesTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void FileNameNullOrEmpty_usingAtribute()
         {
-            Assert.Inconclusive();
+            FileProcess fb = new FileProcess();
+            fb.FileExists("");
         }
 
         [TestMethod]
