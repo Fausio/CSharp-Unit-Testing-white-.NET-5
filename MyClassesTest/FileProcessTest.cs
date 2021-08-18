@@ -21,7 +21,12 @@ namespace MyClassesTest
         [TestMethod]
         public void FileNameDoesNotExists()
         {
-            Assert.Inconclusive();
+            FileProcess fb = new FileProcess();
+            bool fromCall;
+
+            fromCall = fb.FileExists(@"C:\Windows\PFRO.txt");
+
+            Assert.IsFalse(fromCall);
         }
 
         [TestMethod]
