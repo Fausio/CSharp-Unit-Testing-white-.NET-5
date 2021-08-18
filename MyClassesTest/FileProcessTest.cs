@@ -10,7 +10,12 @@ namespace MyClassesTest
         [TestMethod]
         public void FileNameDoesExists()
         {
-            Assert.Inconclusive();
+            FileProcess fb = new FileProcess();
+            bool fromCall;
+
+            fromCall = fb.FileExists(@"C:\Windows\PFRO.log");
+
+            Assert.IsTrue(fromCall);
         }
 
         [TestMethod]
@@ -20,13 +25,13 @@ namespace MyClassesTest
         }
 
         [TestMethod]
-        public void FileNameNullOrEmpty_usingAtribute( )
+        public void FileNameNullOrEmpty_usingAtribute()
         {
             Assert.Inconclusive();
         }
 
         [TestMethod]
-        public void FileNameNullOrEmpty_usingTryCatch( )
+        public void FileNameNullOrEmpty_usingTryCatch()
         {
             Assert.Inconclusive();
         }
