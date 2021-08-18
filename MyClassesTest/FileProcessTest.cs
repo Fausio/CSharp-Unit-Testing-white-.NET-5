@@ -5,26 +5,48 @@ using System;
 namespace MyClassesTest
 {
     [TestClass]
-    public class FileProcessTest
+    public  class FileProcessTest
     {
-        [TestMethod]
+        private const string BAD_FILE_NAME = @"C:\Windows\PFRO.txt";
+        private const string GOOD_FILE_NAME = @"C:\Windows\PFRO.log";
+
+
+        private TestContext testContextInstance1;
+
+        //used to call the base methods of TestContext
+        public TestContext TestContext
+        {
+            get { return testContextInstance1; }
+            set { testContextInstance1 = value; }
+        }
+
+
+        [TestMethod()]
         public void FileNameDoesExists()
         {
+           
+
             FileProcess fb = new FileProcess();
             bool fromCall;
 
-            fromCall = fb.FileExists(@"C:\Windows\PFRO.log");
+          
+
+            fromCall = fb.FileExists(GOOD_FILE_NAME);
 
             Assert.IsTrue(fromCall);
+
+            TestContext.WriteLine(@"Checking "+ GOOD_FILE_NAME);
         }
 
         [TestMethod]
         public void FileNameDoesNotExists()
         {
+           
+
             FileProcess fb = new FileProcess();
             bool fromCall;
 
-            fromCall = fb.FileExists(@"C:\Windows\PFRO.txt");
+            fromCall = fb.FileExists(BAD_FILE_NAME);
 
             Assert.IsFalse(fromCall);
         }
