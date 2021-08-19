@@ -1,11 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyClasses;
+using System.IO;
 using System;
 
 namespace MyClassesTest
 {
     [TestClass]
-    public  class FileProcessTest
+    public class FileProcessTest
     {
         protected string _GOOD_FILE_NAME;
         private const string BAD_FILE_NAME = @"C:\Windows\PFRO.txt";
@@ -36,26 +37,36 @@ namespace MyClassesTest
         [TestMethod()]
         public void FileNameDoesExists()
         {
-           
+
 
             FileProcess fb = new FileProcess();
             bool fromCall;
 
 
             set_BAD_FILE_NAME();
+
+            if (!string.IsNullOrEmpty(_GOOD_FILE_NAME))
+            {
+                // create the 'Good' file
+                File.AppendAllText(_GOOD_FILE_NAME, "Some Text");
+            }
+
             TestContext.WriteLine(@"Checking " + _GOOD_FILE_NAME);
 
             fromCall = fb.FileExists(_GOOD_FILE_NAME);
 
+            if (File.Exists(_GOOD_FILE_NAME))
+                File.Delete(_GOOD_FILE_NAME);
+
             Assert.IsTrue(fromCall);
-            
-            
+
+
         }
 
         [TestMethod]
         public void FileNameDoesNotExists()
         {
-           
+
 
             FileProcess fb = new FileProcess();
             bool fromCall;
@@ -63,8 +74,8 @@ namespace MyClassesTest
             fromCall = fb.FileExists(BAD_FILE_NAME);
 
             Assert.IsFalse(fromCall);
-             
-           TestContext.WriteLine(@"Checking "+ BAD_FILE_NAME);
+
+            TestContext.WriteLine(@"Checking " + BAD_FILE_NAME);
         }
 
         [TestMethod]
