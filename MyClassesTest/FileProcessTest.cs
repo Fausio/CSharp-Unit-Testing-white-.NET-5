@@ -21,6 +21,37 @@ namespace MyClassesTest
             // TODO: clean up after all method run
         }
 
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            TestContext.WriteLine("TestInitialize In FileProcessTest");
+
+            if (TestContext.TestName.StartsWith("FileNameDoesExists"))
+            {
+                set_BAD_FILE_NAME();
+
+                if (!string.IsNullOrEmpty(_GOOD_FILE_NAME))
+                {
+                    // create the 'Good' file
+                    File.AppendAllText(_GOOD_FILE_NAME, "Some Text");
+
+                }
+            }
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+
+            TestContext.WriteLine("TestCleanup In FileProcessTest");
+
+            if (TestContext.TestName.StartsWith("FileNameDoesExists"))
+            {
+                if (File.Exists(_GOOD_FILE_NAME))
+                    File.Delete(_GOOD_FILE_NAME);
+            }
+        }
+
 
         [TestMethod()]
         public void FileNameDoesExists()
@@ -30,21 +61,11 @@ namespace MyClassesTest
             FileProcess fb = new FileProcess();
             bool fromCall;
 
-
-            set_BAD_FILE_NAME();
-
-            if (!string.IsNullOrEmpty(_GOOD_FILE_NAME))
-            {
-                // create the 'Good' file
-                File.AppendAllText(_GOOD_FILE_NAME, "Some Text");
-            }
-
             TestContext.WriteLine(@"Checking " + _GOOD_FILE_NAME);
 
             fromCall = fb.FileExists(_GOOD_FILE_NAME);
 
-            if (File.Exists(_GOOD_FILE_NAME))
-                File.Delete(_GOOD_FILE_NAME);
+
 
             Assert.IsTrue(fromCall);
 
