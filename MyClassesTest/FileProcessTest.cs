@@ -33,8 +33,7 @@ namespace MyClassesTest
                 if (!string.IsNullOrEmpty(_GOOD_FILE_NAME))
                 {
                     // create the 'Good' file
-                    File.AppendAllText(_GOOD_FILE_NAME, "Some Text");
-
+                    File.AppendAllText(_GOOD_FILE_NAME, "Some Text"); 
                 }
             }
         }
@@ -54,6 +53,7 @@ namespace MyClassesTest
 
 
         [TestMethod()]
+        [Description("Check to see if a file exists.")]
         public void FileNameDoesExists()
         {
 
@@ -73,6 +73,7 @@ namespace MyClassesTest
         }
 
         [TestMethod]
+        [Description("Check to see if a file doesnt exists.")]
         public void FileNameDoesNotExists()
         {
 
@@ -89,6 +90,7 @@ namespace MyClassesTest
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [Description("Check for a FileNameNullOrEmpty With ArgumentNullException  Attribute.")]
         public void FileNameNullOrEmpty_usingAtribute()
         {
             FileProcess fb = new FileProcess();
@@ -98,6 +100,7 @@ namespace MyClassesTest
 
 
         [TestMethod]
+        [Description("Check for a FileNameNullOrEmpty Whit try...catch.")]
         public void FileNameNullOrEmpty_usingTryCatch()
         {
             FileProcess fb = new FileProcess();
