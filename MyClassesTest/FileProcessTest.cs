@@ -36,7 +36,7 @@ namespace MyClassesTest
                 if (!string.IsNullOrEmpty(_GOOD_FILE_NAME))
                 {
                     // create the 'Good' file
-                    File.AppendAllText(_GOOD_FILE_NAME, "Some Text"); 
+                    File.AppendAllText(_GOOD_FILE_NAME, "Some Text");
                 }
             }
         }
@@ -144,6 +144,13 @@ namespace MyClassesTest
         {
             Thread.Sleep(1000);
         }
-        
+
+        [TestMethod]
+        [DataRow(1, 1, DisplayName = "First Test (1,1)")]
+        [DataRow(23, 23, DisplayName = "First Test (23,23)")]
+        public void AreNumberEqual(int num1, int num2)
+        {
+            Assert.AreEqual(num1, num2);
+        }
     }
 }
