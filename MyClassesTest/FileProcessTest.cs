@@ -2,6 +2,7 @@
 using MyClasses;
 using System.IO;
 using System;
+using System.Threading;
 
 namespace MyClassesTest
 {
@@ -82,6 +83,7 @@ namespace MyClassesTest
         [Owner("Fausio")]
         [TestCategory("ForFile")]
         [Priority(3)]
+        //[Ignore]
         public void FileNameDoesNotExists()
         {
 
@@ -134,5 +136,14 @@ namespace MyClassesTest
             Assert.Fail("Call to FileExists did Not throw an ArgumentNullException");
 
         }
+
+
+        [TestMethod]
+        [Timeout(3000)]
+        public void RunningTimeTest()
+        {
+            Thread.Sleep(1000);
+        }
+        
     }
 }
