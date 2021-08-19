@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyClasses;
 using System;
 
@@ -7,6 +7,7 @@ namespace MyClassesTest
     [TestClass]
     public  class FileProcessTest
     {
+        protected string _GOOD_FILE_NAME;
         private const string BAD_FILE_NAME = @"C:\Windows\PFRO.txt";
         private const string GOOD_FILE_NAME = @"C:\Windows\PFRO.log";
 
@@ -18,6 +19,17 @@ namespace MyClassesTest
         {
             get { return testContextInstance1; }
             set { testContextInstance1 = value; }
+        }
+
+
+        public void set_BAD_FILE_NAME()
+        {
+            _GOOD_FILE_NAME = TestContext.Properties["GoodFileName"].ToString();
+
+            if (_GOOD_FILE_NAME.Contains("[AppPath]"))
+            {
+                _GOOD_FILE_NAME = _GOOD_FILE_NAME.Replace("[AppPath]", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            }
         }
 
 
@@ -34,8 +46,8 @@ namespace MyClassesTest
             fromCall = fb.FileExists(GOOD_FILE_NAME);
 
             Assert.IsTrue(fromCall);
-
-            TestContext.WriteLine(@"Checking "+ GOOD_FILE_NAME);
+            //set_BAD_FILE_NAME();
+            //TestContext.WriteLine(@"Checking "+ GOOD_FILE_NAME);
         }
 
         [TestMethod]
@@ -49,6 +61,8 @@ namespace MyClassesTest
             fromCall = fb.FileExists(BAD_FILE_NAME);
 
             Assert.IsFalse(fromCall);
+            //set_BAD_FILE_NAME();
+           TestContext.WriteLine(@"Checking "+ BAD_FILE_NAME);
         }
 
         [TestMethod]
