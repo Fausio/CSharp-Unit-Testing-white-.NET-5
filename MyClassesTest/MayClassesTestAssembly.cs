@@ -14,13 +14,14 @@ namespace MyClassesTest
         [AssemblyInitialize]
         public static void AssemblyInitialize(TestContext tc)
         {
+            // TODO: before all testes
             tc.WriteLine("Running AssemblyInitialize");
         }
 
         [AssemblyCleanup]
         public static void AssemblyCleanup()
         {
-             
+            // TODO: after all testes
         }
 
     }

@@ -8,6 +8,19 @@ namespace MyClassesTest
     [TestClass]
     public class FileProcessTest : BaseTest
     {
+        [ClassInitialize]
+        public static void ClassInitialize(TestContext tc)
+        {
+            // TODO: before all methods run
+            tc.WriteLine("ClassInitialize In FileProcessTest");
+        }
+
+        [ClassCleanup]
+        public static void ClassCleanUp()
+        {
+            // TODO: clean up after all method run
+        }
+
 
         [TestMethod()]
         public void FileNameDoesExists()
