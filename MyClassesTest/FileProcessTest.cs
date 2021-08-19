@@ -26,6 +26,8 @@ namespace MyClassesTest
         {
             TestContext.WriteLine("TestInitialize In FileProcessTest");
 
+            WriteDescription(this.GetType());
+
             if (TestContext.TestName.StartsWith("FileNameDoesExists"))
             {
                 set_BAD_FILE_NAME();

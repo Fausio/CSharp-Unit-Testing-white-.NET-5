@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,26 @@ namespace MyClassesTest
             if (_GOOD_FILE_NAME.Contains("[AppPath]"))
             {
                 _GOOD_FILE_NAME = _GOOD_FILE_NAME.Replace("[AppPath]", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            }
+        }
+
+
+        protected  void WriteDescription(Type type)
+        {
+            string TestName = TestContext.TestName;
+            MemberInfo method = type.GetMethod(TestName);
+
+            if (method !=null)
+            {
+                Attribute attr = method.GetCustomAttribute(typeof(DescriptionAttribute));
+             
+                if (attr !=null)
+                {
+                    // Cast the attribte to a DescriptionAttribute
+                    DescriptionAttribute dattr = (DescriptionAttribute)attr;
+
+                    TestContext.WriteLine("Test Description: " + dattr.Description);
+                }
             }
         }
     }
