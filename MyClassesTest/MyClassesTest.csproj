@@ -17,6 +17,12 @@
 		<ProjectReference Include="..\MyClasses\MyClasses.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="FileToDePloy.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 
 
 

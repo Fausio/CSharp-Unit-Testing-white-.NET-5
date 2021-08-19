@@ -147,10 +147,31 @@ namespace MyClassesTest
 
         [TestMethod]
         [DataRow(1, 1, DisplayName = "First Test (1,1)")]
-        [DataRow(23, 23, DisplayName = "First Test (23,23)")]
+        [DataRow(23, 23, DisplayName = "Second Test (23,23)")]
         public void AreNumberEqual(int num1, int num2)
         {
             Assert.AreEqual(num1, num2);
         }
+
+        [TestMethod]
+        [DeploymentItem("FilefTodePloy.txt")]
+        [DataRow(@"C:\windows\regedit.exe",DisplayName = "regedit.exe")]
+        [DataRow("FileToDePloy.txt", DisplayName ="Deployment Item: FileToDeploy")]
+        public void FileNameUsingDataRow(string FileName)
+        {
+            FileProcess fp = new FileProcess();
+            bool fromCall;
+
+            if (!FileName.Contains(@"\"))
+            {
+                FileName = TestContext.DeploymentDirectory + @"\" + FileName;
+            }
+
+            TestContext.WriteLine("Checking File" + FileName);
+            fromCall = fp.FileExists(FileName);
+
+            Assert.IsTrue(fromCall);
+        }
+
     }
 }
