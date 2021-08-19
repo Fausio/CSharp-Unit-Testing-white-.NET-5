@@ -17,7 +17,7 @@ namespace MyClassesTest
         private TestContext testContextInstance1;
 
         //used to call the base methods of TestContext
-        protected TestContext TestContext
+        public TestContext TestContext
         {
             get { return testContextInstance1; }
             set { testContextInstance1 = value; }
