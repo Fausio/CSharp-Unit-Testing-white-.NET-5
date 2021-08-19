@@ -41,13 +41,15 @@ namespace MyClassesTest
             FileProcess fb = new FileProcess();
             bool fromCall;
 
-          
 
-            fromCall = fb.FileExists(GOOD_FILE_NAME);
+            set_BAD_FILE_NAME();
+            TestContext.WriteLine(@"Checking " + _GOOD_FILE_NAME);
+
+            fromCall = fb.FileExists(_GOOD_FILE_NAME);
 
             Assert.IsTrue(fromCall);
-            //set_BAD_FILE_NAME();
-            //TestContext.WriteLine(@"Checking "+ GOOD_FILE_NAME);
+            
+            
         }
 
         [TestMethod]
@@ -61,7 +63,7 @@ namespace MyClassesTest
             fromCall = fb.FileExists(BAD_FILE_NAME);
 
             Assert.IsFalse(fromCall);
-            //set_BAD_FILE_NAME();
+             
            TestContext.WriteLine(@"Checking "+ BAD_FILE_NAME);
         }
 
