@@ -3,5 +3,8 @@
     <TestRunParameters>
         <Parameter name="GoodFileName"
          value="[AppPath]\TestFile.txt" />
+	
+		<Parameter Name="connectionString" value="data source=DESKTOP-C8733BB\MSSQLSERVER01;initial catalog=master;User Id=sa1;Password=medi;integrated security=false;MultipleActiveResultSets=True;App=EntityFramework"  />
+			 
     </TestRunParameters>
 </RunSettings>

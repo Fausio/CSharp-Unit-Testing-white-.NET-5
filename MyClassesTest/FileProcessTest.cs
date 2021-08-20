@@ -154,7 +154,7 @@ namespace MyClassesTest
         }
 
         [TestMethod]
-        [DeploymentItem("FilefTodePloy.txt")]
+        [DeploymentItem("FileToDeploy.txt")]
         [DataRow(@"C:\windows\regedit.exe",DisplayName = "regedit.exe")]
         [DataRow("FileToDePloy.txt", DisplayName ="Deployment Item: FileToDeploy")]
         public void FileNameUsingDataRow(string FileName)
